@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Contact-List-React/static/css/main.b8c67552.css",
+    "main.js": "/Contact-List-React/static/js/main.37797f2d.js",
+    "static/media/bg.jpg": "/Contact-List-React/static/media/bg.da71bc266e9001ccd463.jpg",
+    "index.html": "/Contact-List-React/index.html",
+    "main.b8c67552.css.map": "/Contact-List-React/static/css/main.b8c67552.css.map",
+    "main.37797f2d.js.map": "/Contact-List-React/static/js/main.37797f2d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b8c67552.css",
+    "static/js/main.37797f2d.js"
+  ]
+}
