@@ -2,14 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-// import AddContact from './contact';
+// import AddContacts from './contact';
 // import ListItem from './item';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <AddContact /> */}
+    {/* <AddContacts /> */}
     {/* <ListItem /> */}
     <App/>
   </React.StrictMode>
