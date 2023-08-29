@@ -1,25 +1,118 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ListItem from "./item";
+import AddContact from "./contact";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      users: [],
+    };
+  }
+
+  async componentDidMount() {
+    const url = "https://jsonplaceholder.typicode.com/users";
+    const response = await fetch(url);
+    const data = await response.json();
+
+    this.setState({
+      users: data,
+    });
+  }
+
+  handleDeleteContact = async (id) => {
+    let { users } = this.state;
+    const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+    await fetch(url, {
+      method: "DELETE",
+    });
+
+    let updatedUsers = users.filter((user) => user.id !== id);
+
+    this.setState({
+      users: updatedUsers,
+    });
+  };
+
+  handleUpdateContact = async (name, phone, id) => {
+    const { users } = this.state;
+    const url = `https://jsonplaceholder.typicode.com/users/${id}`;
+    await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify({
+        id,
+        phone,
+        name,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    })
+    .then((response) => response.json())
+    .then((json) => console.log("Data from updation of contact", json));
+
+    let updatedUsers = users.map((user) => {
+      if (user.id === id) {
+        user.name = name;
+        user.phone = phone;
+      }
+      return user;
+    });
+
+    this.setState({
+      users: updatedUsers,
+    });
+  };
+
+  handleAddContact = async (name, phone) => {
+    //generating a unique id using date
+    let id = Date.now();
+    const { users } = this.state;
+    const url = "https://jsonplaceholder.typicode.com/users";
+    await fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        phone,
+      }),
+    })
+    .then((response) => response.json())
+    .then((json) => console.log("ADD CONTACT", json));
+
+    let updatedUsers = [{ name, phone, id }].concat(users);
+
+    this.setState({
+      users: updatedUsers,
+    });
+  };
+
+  render() {
+    const { users } = this.state;
+    return (
+      <div className="App">
+        <AddContact addContact={this.handleAddContact} />
+        <div id="contact-list-container">
+          <ul>
+            {users.length === 0 ? (
+              <h1>Loading...</h1>
+            ) :(
+              users.map((user) => {
+                return (
+                  <ListItem
+                    name={user.name}
+                    contact={user.phone}
+                    key={user.id}
+                    handleDelete={this.handleDeleteContact}
+                    handleUpdate={this.handleUpdateContact}
+                  />
+                );
+              })
+            )}
+          </ul>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

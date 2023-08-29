@@ -1,13 +1,159 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  background-image: url("/bg.jpg");
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: row;
+  padding-left: 3%;
+}
+
+#contact-list-container {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+#add-contacts-container {
+  width: 40vw;
+  text-align: center;
+}
+
+header {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+img {
+  width: 50px;
+  height: 40px;
+  margin: 5px 20px 0 0;
+}
+
+ul {
+  list-style-type: none;
+  width: 90%;
+  margin: auto;
+}
+
+p {
+  display: inline-block;
+  color: whitesmoke;
+  margin-right: 5px;
+  font-size: 1.3rem;
+}
+
+h1 {
+  color: white;
+  font-weight: 900;
+  font-size: 3rem;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  display: inline;
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: white;
+  font-size: 30px;
+}
+
+li {
+  background: radial-gradient(
+      circle at 10% 20%,
+      rgb(1, 30, 68) 0%,
+      rgb(205, 204, 204) 90.2%
+    );
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: flex-start;
+  margin: 30px;
+  border-radius: 10px;
+}
+
+.window-close {
+  margin-left: 30px;
+  color: red;
+  background-color: white;
+}
+
+li:hover {
+  background-color: grey;
+  scale: 110%;
+}
+
+form {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-left: 10px;
+  border-radius: 15px;
+  font-size: 20px;
+  padding: 8px;
+
+  width: 60%;
+  margin: 15px auto;
+}
+
+button {
+  margin-top: 10px;
+  display: inline-block;
+  height: 40px;
+  width: 150px;
+  color: white;
+  background: radial-gradient(
+      circle at 10% 20%,
+      rgb(1, 46, 7) 0%,
+      rgb(84, 207, 207) 90.2%
+    );
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+.list-btn {
+  height: 40px;
+  width: 40px;
+}
+
+.name-container,
+.phone-container {
+  width: 40%;
+  text-align: center;
+}
+
+.btns-container {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#add-contacts-container {
+  position: absolute;
+  top: 30%;
+}
+
+#contact-list-container {
+  position: absolute;
+  right: 0;
+  height: 100vh;
+  overflow: scroll;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
