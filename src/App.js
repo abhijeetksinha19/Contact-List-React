@@ -1,6 +1,6 @@
 import React from "react";
 import ListItem from "./item";
-import AddContact from "./contact";
+import AddContacts from "./contact";
 
 class App extends React.Component {
   constructor() {
@@ -48,8 +48,10 @@ class App extends React.Component {
         "Content-type": "application/json; charset=UTF-8",
       },
     })
-    .then((response) => response.json())
-    .then((json) => console.log("Data from updation of contact", json));
+      .then((response) => response.json())
+      .then((json) => console.log("Data from updation of contact", json));
+
+    // let updatedUsers = [];
 
     let updatedUsers = users.map((user) => {
       if (user.id === id) {
@@ -65,8 +67,7 @@ class App extends React.Component {
   };
 
   handleAddContact = async (name, phone) => {
-    //generating a unique id using date
-    let id = Date.now();
+    let id = Date.now(); //genarting a unique id using date
     const { users } = this.state;
     const url = "https://jsonplaceholder.typicode.com/users";
     await fetch(url, {
@@ -75,9 +76,12 @@ class App extends React.Component {
         name,
         phone,
       }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
     })
-    .then((response) => response.json())
-    .then((json) => console.log("ADD CONTACT", json));
+      .then((response) => response.json())
+      .then((json) => console.log("ADD CONTACT", json));
 
     let updatedUsers = [{ name, phone, id }].concat(users);
 
@@ -90,18 +94,19 @@ class App extends React.Component {
     const { users } = this.state;
     return (
       <div className="App">
-        <AddContact addContact={this.handleAddContact} />
+        <AddContacts addContact={this.handleAddContact} />
         <div id="contact-list-container">
           <ul>
             {users.length === 0 ? (
-              <h1>Loading...</h1>
-            ) :(
+              <h1>Loading....</h1>
+            ) : (
               users.map((user) => {
                 return (
                   <ListItem
                     name={user.name}
                     contact={user.phone}
                     key={user.id}
+                    id={user.id}
                     handleDelete={this.handleDeleteContact}
                     handleUpdate={this.handleUpdateContact}
                   />
@@ -116,3 +121,4 @@ class App extends React.Component {
 }
 
 export default App;
+
