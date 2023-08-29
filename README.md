@@ -1,3 +1,24 @@
+# App is deployed at - https://abhijeetksinha19.github.io/Contact-List-React/
+
+
+# when different files are rendered
+
+1.> only contact.js is rendered
+![contact](https://github.com/abhijeetksinha19/Contact-List-React/assets/106515990/4e9121d2-f023-495c-875c-1c147958fd02)
+
+2.> only item.js is rendered
+![item](https://github.com/abhijeetksinha19/Contact-List-React/assets/106515990/f495c999-fc39-4b9e-af7e-6086effdff35)
+
+3.>when both contact.js and item.js are rendered together
+![ContactItem](https://github.com/abhijeetksinha19/Contact-List-React/assets/106515990/a2c53211-d03a-4461-8d59-bb847f1d24bd)
+
+4.>When final App is renderd through App.js and all components of contact.js and item.js are importd to App.js
+![App](https://github.com/abhijeetksinha19/Contact-List-React/assets/106515990/e03dd19c-b2c3-4e78-80e3-f9e3219046b9)
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
